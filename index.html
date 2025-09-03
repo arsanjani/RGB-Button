@@ -119,18 +119,34 @@
       </div>
 
       <div class="card">
+        <h2>Animation Speed Options</h2>
+        <div class="demo-row">
+          <button class="rgb-button rgb-button--super-fast">Super Fast (3s)</button>
+          <button class="rgb-button rgb-button--fast">Fast (8s)</button>
+          <button class="rgb-button">Default (20s)</button>
+          <button class="rgb-button rgb-button--slow">Slow (30s)</button>
+        </div>
+        <div class="demo-row">
+          <button class="rgb-button rgb-button--custom" style="--rgb-speed: 12s;">Custom (12s)</button>
+        </div>
+        <div class="note">
+          Use speed modifier classes: <code>rgb-button--super-fast</code>, <code>rgb-button--fast</code>, <code>rgb-button--slow</code>, or <code>rgb-button--custom</code> with a CSS variable.
+        </div>
+      </div>
+
+      <div class="card">
         <h2>Custom Gradients</h2>
         <div class="demo-row">
           <button
             class="rgb-button"
-            style="--rgb-gradient: linear-gradient(90deg, #00f260, #0575e6); --rgb-speed: 8s; --rgb-blur: 8px; --rgb-radius: 25px;"
+            style="--rgb-gradient: linear-gradient(90deg, #00f260, #0575e6); --rgb-blur: 8px; --rgb-radius: 25px;"
           >
             Ocean Gradient
           </button>
 
           <button
-            class="rgb-button"
-            style="--rgb-gradient: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #ff006e); --rgb-size: 500%; --rgb-speed: 12s;"
+            class="rgb-button rgb-button--fast"
+            style="--rgb-gradient: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #ff006e); --rgb-size: 500%;"
           >
             Faster Purple Wave
           </button>

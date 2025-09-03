@@ -1,0 +1,40 @@
+{
+  "name": "rgb-glow-button",
+  "version": "1.0.0",
+  "description": "A reusable CSS button with animated RGB glow border, replicated from Nakhl Market Plus",
+  "main": "styles/rgb-button.css",
+  "files": [
+    "styles/",
+    "index.html",
+    "README.md",
+    "demo/"
+  ],
+  "keywords": [
+    "css",
+    "button",
+    "animation",
+    "rgb",
+    "glow",
+    "ui-component",
+    "frontend",
+    "reusable"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "homepage": "https://github.com/yourusername/rgb-button#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/rgb-button.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/rgb-button/issues"
+  },
+  "scripts": {
+    "demo": "open index.html"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

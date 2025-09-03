@@ -1,23 +1,16 @@
 /*
   RGB Glow Button (reusable)
-  - Exact replica of the "خرید اشتراک" button from nakhlmarket.com/nakhlplus/
   - Drop-in CSS with customizable CSS variables
   - No JS required
 */
 
-.rgb-button {
-  /* Customizable properties - exact values from target site */
+:root {
+  /* Customizable properties */
   --rgb-gradient: linear-gradient(
     45deg,
-    rgb(255, 0, 0),
-    rgb(255, 115, 0),
-    rgb(255, 251, 0),
-    rgb(72, 255, 0),
-    rgb(0, 255, 213),
-    rgb(0, 43, 255),
-    rgb(122, 0, 255),
-    rgb(255, 0, 200),
-    rgb(255, 0, 0)
+    #ff0000, #ff7300, #fffb00, #48ff00,
+    #00ffd5, #002bff, #7a00ff, #ff00c8,
+    #ff0000
   );
   --rgb-background: rgb(17, 17, 17);
   --rgb-after-background: rgb(34, 34, 34);
@@ -25,112 +18,190 @@
   --rgb-radius: 10px;
   --rgb-padding-y: 0.6em;
   --rgb-padding-x: 2em;
-  --rgb-speed: 20s;          /* animation duration */
-  --rgb-size: 400%;          /* gradient size */
-  --rgb-blur: 5px;           /* glow softness */
-  --rgb-glow-gap: 2px;       /* thickness of the glow border */
-
-  /* Base button styles - exact replica */
-  padding: var(--rgb-padding-y) var(--rgb-padding-x);
-  border: none;
-  outline: none;
-  color: var(--rgb-foreground);
-  background: var(--rgb-background);
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: var(--rgb-radius);
-  user-select: none;
-  touch-action: manipulation;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: 1.2;
-  text-decoration: none;
-  display: inline-block;
+  --rgb-speed: 20s;
+  --rgb-size: 400%;
+  --rgb-blur: 5px;
+  --rgb-glow-gap: 2px;
+  
+  /* Animation properties */
+  --rgb-animation-name: glowing-rgb-button;
+  --rgb-animation-duration: 20s;
+  --rgb-animation-timing-function: linear;
+  --rgb-animation-iteration-count: infinite;
+  --rgb-animation-fill-mode: none;
+  --rgb-animation-direction: normal;
+  
+  /* Positioning and layout */
+  --rgb-z-index: 0;
+  --rgb-pseudo-z-index: -1;
+  --rgb-position: relative;
+  --rgb-pseudo-position: absolute;
+  
+  /* Background properties */
+  --rgb-background-repeat: no-repeat;
+  --rgb-background-position-start: 0%;
+  --rgb-background-position-middle: 100%;
+  --rgb-background-position-end: 0%;
+  --rgb-background-position-y: 50%;
+  
+  /* Dimensions */
+  --rgb-pseudo-width: 100%;
+  --rgb-pseudo-height: 100%;
+  --rgb-pseudo-top: 0;
+  --rgb-pseudo-left: 0;
+  
+  /* Interactive states */
+  --rgb-hover-opacity: 0.9;
+  --rgb-active-transform: translateY(1px);
+  --rgb-transition-duration: 0.3s;
+  --rgb-transition-timing: ease-in-out;
+  --rgb-transition-property: opacity;
+  
+  /* Focus styles */
+  --rgb-focus-outline-width: 2px;
+  --rgb-focus-outline-style: solid;
+  --rgb-focus-outline-offset: 2px;
+  
+  /* Typography */
+  --rgb-line-height: 1.2;
+  --rgb-text-decoration: none;
+  --rgb-display: inline-block;
+  --rgb-font-family: inherit;
+  --rgb-font-size: inherit;
+  --rgb-font-weight: inherit;
+  
+  /* Interaction */
+  --rgb-cursor: pointer;
+  --rgb-user-select: none;
+  --rgb-touch-action: manipulation;
+  
+  /* Border and outline */
+  --rgb-border: none;
+  --rgb-outline: none;
+  
+  /* Speed modifier values */
+  --rgb-speed-super-fast: 3s;
+  --rgb-speed-fast: 8s;
+  --rgb-speed-slow: 30s;
+  
+  /* Size modifier values */
+  --rgb-sm-padding-y: 0.375em;
+  --rgb-sm-padding-x: 1.5em;
+  --rgb-sm-radius: 8px;
+  --rgb-lg-padding-y: 0.75em;
+  --rgb-lg-padding-x: 2.5em;
+  --rgb-lg-radius: 12px;
 }
 
-/* RGB glow effect - exact replica */
+.rgb-button {
+  padding: var(--rgb-padding-y) var(--rgb-padding-x);
+  border: var(--rgb-border);
+  outline: var(--rgb-outline);
+  color: var(--rgb-foreground);
+  background: var(--rgb-background);
+  cursor: var(--rgb-cursor);
+  position: var(--rgb-position);
+  z-index: var(--rgb-z-index);
+  border-radius: var(--rgb-radius);
+  user-select: var(--rgb-user-select);
+  touch-action: var(--rgb-touch-action);
+  font-family: var(--rgb-font-family);
+  font-size: var(--rgb-font-size);
+  font-weight: var(--rgb-font-weight);
+  line-height: var(--rgb-line-height);
+  text-decoration: var(--rgb-text-decoration);
+  display: var(--rgb-display);
+}
+
 .rgb-button::before {
   content: "";
   background-image: var(--rgb-gradient);
   background-size: var(--rgb-size);
-  background-repeat: no-repeat;
-  position: absolute;
+  background-repeat: var(--rgb-background-repeat);
+  position: var(--rgb-pseudo-position);
   top: calc(-1 * var(--rgb-glow-gap));
   left: calc(-1 * var(--rgb-glow-gap));
-  z-index: -1;
+  z-index: var(--rgb-pseudo-z-index);
   filter: blur(var(--rgb-blur));
   width: calc(100% + calc(2 * var(--rgb-glow-gap)));
   height: calc(100% + calc(2 * var(--rgb-glow-gap)));
-  animation-name: glowing-rgb-button;
-  animation-duration: var(--rgb-speed);
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  transition: opacity 0.3s ease-in-out;
+  animation-name: var(--rgb-animation-name);
+  animation-duration: var(--rgb-animation-duration);
+  animation-timing-function: var(--rgb-animation-timing-function);
+  animation-iteration-count: var(--rgb-animation-iteration-count);
+  animation-fill-mode: var(--rgb-animation-fill-mode);
+  animation-direction: var(--rgb-animation-direction);
+  transition-property: var(--rgb-transition-property);
+  transition-duration: var(--rgb-transition-duration);
+  transition-timing-function: var(--rgb-transition-timing);
   border-radius: var(--rgb-radius);
 }
 
-/* Dark background overlay - exact replica */
 .rgb-button::after {
-  z-index: -1;
+  z-index: var(--rgb-pseudo-z-index);
   content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  position: var(--rgb-pseudo-position);
+  width: var(--rgb-pseudo-width);
+  height: var(--rgb-pseudo-height);
   background: var(--rgb-after-background);
-  left: 0;
-  top: 0;
+  left: var(--rgb-pseudo-left);
+  top: var(--rgb-pseudo-top);
   border-radius: var(--rgb-radius);
 }
 
-/* Exact keyframe animation from target site */
 @keyframes glowing-rgb-button {
-  0% {
-    background-position: 0px 0px;
-  }
-  50% {
-    background-position: 400% 0px;
-  }
-  100% {
-    background-position: 0px 0px;
-  }
+  0% { background-position: var(--rgb-background-position-start) var(--rgb-background-position-y); }
+  50% { background-position: var(--rgb-background-position-middle) var(--rgb-background-position-y); }
+  100% { background-position: var(--rgb-background-position-end) var(--rgb-background-position-y); }
 }
 
-/* Accessibility: Respect user preferences */
+/* Accessibility: Uncomment below to respect user's motion preferences
 @media (prefers-reduced-motion: reduce) {
   .rgb-button::before {
-    animation: none;
+    animation: none !important;
   }
 }
+*/
 
-/* Hover effects */
 .rgb-button:hover {
-  opacity: 0.9;
+  opacity: var(--rgb-hover-opacity);
 }
 
 .rgb-button:active {
-  transform: translateY(1px);
+  transform: var(--rgb-active-transform);
 }
 
-/* Focus styles for accessibility */
 .rgb-button:focus-visible {
-  outline: 2px solid var(--rgb-foreground);
-  outline-offset: 2px;
+  outline: var(--rgb-focus-outline-width) var(--rgb-focus-outline-style) var(--rgb-foreground);
+  outline-offset: var(--rgb-focus-outline-offset);
 }
 
-/*
-  Example size modifiers (optional)
-  - You can also just override the padding variables inline or in your own CSS
-*/
+/* --- SPEED MODIFIERS --- */
+.rgb-button--super-fast::before {
+  animation-duration: var(--rgb-speed-super-fast);
+}
+
+.rgb-button--fast::before {
+  animation-duration: var(--rgb-speed-fast);
+}
+
+.rgb-button--slow::before {
+  animation-duration: var(--rgb-speed-slow);
+}
+
+.rgb-button--custom::before {
+  animation-duration: var(--rgb-speed);
+}
+
+/* --- SIZE MODIFIERS --- */
 .rgb-button--sm {
-  --rgb-padding-y: 0.375em;
-  --rgb-padding-x: 1.5em;
-  --rgb-radius: 8px;
+  --rgb-padding-y: var(--rgb-sm-padding-y);
+  --rgb-padding-x: var(--rgb-sm-padding-x);
+  --rgb-radius: var(--rgb-sm-radius);
 }
 
 .rgb-button--lg {
-  --rgb-padding-y: 0.75em;
-  --rgb-padding-x: 2.5em;
-  --rgb-radius: 12px;
+  --rgb-padding-y: var(--rgb-lg-padding-y);
+  --rgb-padding-x: var(--rgb-lg-padding-x);
+  --rgb-radius: var(--rgb-lg-radius);
 }
