@@ -1,6 +1,6 @@
 # RGB Glow Button
 
-A reusable, framework-agnostic CSS button with an animated RGB glow border, replicated exactly from the "خرید اشتراک" (Buy Subscription) button on [Nakhl Market Plus](https://nakhlmarket.com/nakhlplus/).
+A reusable, framework-agnostic CSS button with an animated RGB glow border.
 
 ![RGB Button Demo](https://img.shields.io/badge/CSS-RGB%20Animation-ff6b6b?style=for-the-badge&logo=css3)
 
