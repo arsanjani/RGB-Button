@@ -8,9 +8,7 @@ A reusable, framework-agnostic CSS button with an animated RGB glow border, no J
 
 ## 🎬 Live Demo
 
-!
-
-> **Live Preview**: Open `index.html` in your browser to see the animation in action, or visit the [GitHub Pages demo](https://arsanjani.github.io/rgb-button/)
+> **Live Preview**: Open `index.html` in your browser to see the animation in action, or visit the [GitHub Pages demo](https://arsanjani.github.io/RGB-Button/)
 
 ## ✨ Features
 
